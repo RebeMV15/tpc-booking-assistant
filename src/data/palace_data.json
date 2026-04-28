@@ -1,0 +1,624 @@
+{
+  "cadena": "The Palace Company",
+  "nota_poc": "Datos para uso exclusivo en el prototipo POC. Precios orientativos. Vuelos simulados.",
+  "destinos": [
+    {
+      "id": "ocho-rios",
+      "nombre": "Ocho Ríos",
+      "pais": "Jamaica",
+      "descripcion": "La costa norte de Jamaica combina cascadas selváticas, playas de arena dorada y una cultura vibrante que se respira en cada rincón. Ocho Ríos es el destino ideal para quien busca aventura con alma caribeña.",
+      "clima": {
+        "descripcion": "Tropical húmedo. Caluroso todo el año con brisa marina. Temporada de lluvias de mayo a octubre.",
+        "meses": {
+          "enero":    { "max": 28, "min": 21, "lluvia": "baja" },
+          "febrero":  { "max": 28, "min": 21, "lluvia": "baja" },
+          "marzo":    { "max": 29, "min": 22, "lluvia": "baja" },
+          "abril":    { "max": 30, "min": 23, "lluvia": "baja" },
+          "mayo":     { "max": 31, "min": 24, "lluvia": "media" },
+          "junio":    { "max": 32, "min": 25, "lluvia": "media" },
+          "julio":    { "max": 32, "min": 25, "lluvia": "media" },
+          "agosto":   { "max": 32, "min": 25, "lluvia": "media" },
+          "septiembre":{ "max": 31, "min": 25, "lluvia": "alta" },
+          "octubre":  { "max": 31, "min": 24, "lluvia": "alta" },
+          "noviembre": { "max": 30, "min": 23, "lluvia": "media" },
+          "diciembre": { "max": 29, "min": 22, "lluvia": "baja" }
+        }
+      },
+      "vuelos": [
+        { "origen": "Madrid (MAD)", "destino": "Montego Bay (MBJ)", "duracion": "10h 30m", "escalas": 1, "escala_en": "Miami", "precio_desde": 680, "aerolinea": "Iberia / American Airlines" },
+        { "origen": "Dallas (DFW)", "destino": "Montego Bay (MBJ)", "duracion": "3h 45m", "escalas": 0, "escala_en": null, "precio_desde": 340, "aerolinea": "American Airlines" },
+        { "origen": "San Francisco (SFO)", "destino": "Montego Bay (MBJ)", "duracion": "8h 20m", "escalas": 1, "escala_en": "Dallas", "precio_desde": 520, "aerolinea": "American Airlines" },
+        { "origen": "Miami (MIA)", "destino": "Montego Bay (MBJ)", "duracion": "1h 30m", "escalas": 0, "escala_en": null, "precio_desde": 180, "aerolinea": "American Airlines" },
+        { "origen": "Nueva York (JFK)", "destino": "Montego Bay (MBJ)", "duracion": "3h 30m", "escalas": 0, "escala_en": null, "precio_desde": 290, "aerolinea": "JetBlue" }
+      ],
+      "hoteles": [
+        {
+          "id": "moon-palace-jamaica",
+          "nombre": "Moon Palace Jamaica",
+          "tipo": "Resort Todo Incluido",
+          "descripcion": "Siente el ritmo del reggae con alma de lujo total. Prueba la auténtica cocina jamaiquina, acompañada de su música y calidez, así como el spa más grande de la isla. Moon Palace Jamaica es el resort Todo Incluido ideal para familias y parejas.",
+          "atributos": {
+            "todo_incluido": true,
+            "golf": false,
+            "familia": true,
+            "adults_only": false,
+            "transfer_aeropuerto_gratis": "mínimo 4 noches",
+            "resort_credit": "500 USD con mínimo 4 noches",
+            "ninos_gratis": "hasta 17 años",
+            "aventura": true,
+            "relajacion_bienestar": false,
+            "hotel_boutique": false,
+            "spa": true
+          },
+          "precio_desde": 428,
+          "habitaciones": [
+            { "tipo": "Deluxe Resort View", "capacidad": 3, "metros": 27, "precio_noche": 428 },
+            { "tipo": "Deluxe Resort View con balcón", "capacidad": 5, "metros": 27, "precio_noche": 468 },
+            { "tipo": "Ocean View con balcón", "capacidad": 5, "metros": 30, "precio_noche": 519 },
+            { "tipo": "Superior Honeymoon Deluxe", "capacidad": 2, "metros": 30, "precio_noche": 623 },
+            { "tipo": "Superior Junior Suite Ocean View", "capacidad": 5, "metros": 46, "precio_noche": 660 },
+            { "tipo": "Superior Governor's Suite", "capacidad": 5, "metros": 30, "precio_noche": 976 },
+            { "tipo": "Superior Family Deluxe", "capacidad": 7, "metros": 60, "precio_noche": 1246 },
+            { "tipo": "Superior Two Bedrooms Presidential Suite", "capacidad": 7, "metros": 60, "precio_noche": 2594 }
+          ],
+          "restaurantes": [
+            { "nombre": "Reggae Café", "tipo": "Jamaicana / Internacional", "horario": "7:00 - 22:30", "dress_code": "Casual" },
+            { "nombre": "Blue Lagoon", "tipo": "Mariscos y pescado", "horario": "13:00 - 22:00", "dress_code": "Smart casual" },
+            { "nombre": "Spice", "tipo": "Fusión caribeña", "horario": "18:00 - 22:30", "dress_code": "Smart casual" },
+            { "nombre": "The Grill", "tipo": "Carnes a la brasa", "horario": "12:00 - 22:00", "dress_code": "Casual" }
+          ],
+          "actividades": [
+            { "nombre": "Dunn's River Falls via bus", "descripcion": "Visita las famosas cascadas del Río Dunn en Jamaica. Escala la roca y refréscate con un chapuzón.", "tipo": "Excursión" },
+            { "nombre": "Yaaman Full Hundred", "descripcion": "Este parque combina la cultura y la aventura. Vive una increíble experiencia en la naturaleza.", "tipo": "Parque temático" },
+            { "nombre": "Kayak y paddleboard", "descripcion": "Explora la bahía en kayak o paddleboard con equipo incluido.", "tipo": "Deporte acuático" },
+            { "nombre": "Clases de cocina jamaicana", "descripcion": "Aprende a preparar jerk chicken y otros clásicos de la isla con chefs locales.", "tipo": "Cultural" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "punta-cana",
+      "nombre": "Punta Cana",
+      "pais": "República Dominicana",
+      "descripcion": "Kilómetros de playas de arena blanca, aguas turquesa y una oferta de lujo sin igual hacen de Punta Cana uno de los destinos caribeños más deseados. Sol garantizado y ambiente vibrante todo el año.",
+      "clima": {
+        "descripcion": "Tropical seco. Soleado prácticamente todo el año. Temporada de huracanes de junio a noviembre, aunque el impacto directo es poco frecuente.",
+        "meses": {
+          "enero":    { "max": 28, "min": 20, "lluvia": "baja" },
+          "febrero":  { "max": 28, "min": 20, "lluvia": "baja" },
+          "marzo":    { "max": 29, "min": 21, "lluvia": "baja" },
+          "abril":    { "max": 30, "min": 22, "lluvia": "baja" },
+          "mayo":     { "max": 31, "min": 23, "lluvia": "media" },
+          "junio":    { "max": 32, "min": 24, "lluvia": "media" },
+          "julio":    { "max": 32, "min": 24, "lluvia": "media" },
+          "agosto":   { "max": 32, "min": 24, "lluvia": "media" },
+          "septiembre":{ "max": 32, "min": 24, "lluvia": "alta" },
+          "octubre":  { "max": 31, "min": 23, "lluvia": "alta" },
+          "noviembre": { "max": 30, "min": 22, "lluvia": "media" },
+          "diciembre": { "max": 29, "min": 21, "lluvia": "baja" }
+        }
+      },
+      "vuelos": [
+        { "origen": "Madrid (MAD)", "destino": "Punta Cana (PUJ)", "duracion": "9h 45m", "escalas": 0, "escala_en": null, "precio_desde": 590, "aerolinea": "Iberia / Air Europa" },
+        { "origen": "Dallas (DFW)", "destino": "Punta Cana (PUJ)", "duracion": "4h 10m", "escalas": 0, "escala_en": null, "precio_desde": 380, "aerolinea": "American Airlines" },
+        { "origen": "San Francisco (SFO)", "destino": "Punta Cana (PUJ)", "duracion": "8h 50m", "escalas": 1, "escala_en": "Miami", "precio_desde": 540, "aerolinea": "American Airlines" },
+        { "origen": "Miami (MIA)", "destino": "Punta Cana (PUJ)", "duracion": "2h 20m", "escalas": 0, "escala_en": null, "precio_desde": 210, "aerolinea": "American Airlines / JetBlue" },
+        { "origen": "Nueva York (JFK)", "destino": "Punta Cana (PUJ)", "duracion": "3h 50m", "escalas": 0, "escala_en": null, "precio_desde": 270, "aerolinea": "JetBlue / American Airlines" }
+      ],
+      "hoteles": [
+        {
+          "id": "moon-palace-grand-punta-cana",
+          "nombre": "Moon Palace The Grand - Punta Cana",
+          "tipo": "Resort Todo Incluido",
+          "descripcion": "Explora las cálidas playas de República Dominicana con todo el confort y Todo Incluido para divertirte sin fin. Un resort de gran escala con campo de golf, spa y restaurantes de nivel internacional en primera línea de playa.",
+          "atributos": {
+            "todo_incluido": true,
+            "golf": true,
+            "familia": true,
+            "adults_only": false,
+            "transfer_aeropuerto_gratis": "mínimo 4 noches",
+            "resort_credit": "500 USD con mínimo 4 noches",
+            "ninos_gratis": "hasta 17 años",
+            "aventura": true,
+            "relajacion_bienestar": true,
+            "hotel_boutique": false,
+            "spa": true
+          },
+          "precio_desde": 746,
+          "habitaciones": [
+            { "tipo": "Grand Junior Suite Golf View", "capacidad": 5, "metros": 59, "precio_noche": 746 },
+            { "tipo": "Grand Superior Deluxe Golf View", "capacidad": 5, "metros": 72, "precio_noche": 821 },
+            { "tipo": "Grand Superior Deluxe Ocean View", "capacidad": 5, "metros": 59, "precio_noche": 858 },
+            { "tipo": "Grand Swim-up Suite Ocean View", "capacidad": 5, "metros": 59, "precio_noche": 1120 },
+            { "tipo": "Grand Governor's Suite Ocean View", "capacidad": 5, "metros": 124, "precio_noche": 1632 },
+            { "tipo": "Grand Family Suite Golf View", "capacidad": 7, "metros": 120, "precio_noche": 1792 }
+          ],
+          "restaurantes": [
+            { "nombre": "Aqua", "tipo": "Mariscos y cocina del mar", "horario": "12:00 - 22:30", "dress_code": "Smart casual" },
+            { "nombre": "La Española", "tipo": "Dominicana / Caribeña", "horario": "7:00 - 22:00", "dress_code": "Casual" },
+            { "nombre": "Toscana", "tipo": "Italiana", "horario": "18:00 - 22:30", "dress_code": "Smart casual" },
+            { "nombre": "The Grand Steakhouse", "tipo": "Carnes premium", "horario": "18:30 - 23:00", "dress_code": "Smart casual" },
+            { "nombre": "Sakura", "tipo": "Japonesa / Asiática", "horario": "12:00 - 22:00", "dress_code": "Casual" }
+          ],
+          "actividades": [
+            { "nombre": "Golf en campo de 18 hoyos", "descripcion": "Campo de golf profesional de 18 hoyos con vistas al mar Caribe.", "tipo": "Deporte" },
+            { "nombre": "Snorkel en arrecifes", "descripcion": "Explora los arrecifes de coral de la costa este con equipo incluido.", "tipo": "Deporte acuático" },
+            { "nombre": "Catamaran sunset cruise", "descripcion": "Navegación en catamarán al atardecer con bebidas y aperitivos.", "tipo": "Excursión" },
+            { "nombre": "Visita a Isla Saona", "descripcion": "Excursión de día completo a la paradisíaca Isla Saona en barco.", "tipo": "Excursión" },
+            { "nombre": "Club infantil Wired Teens", "descripcion": "Programa de actividades para niños y adolescentes durante todo el día.", "tipo": "Familiar" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cancun",
+      "nombre": "Cancún",
+      "pais": "México",
+      "descripcion": "El Caribe mexicano en su máxima expresión. Cancún combina playas de arena blanca, aguas turquesas, cenotes, cultura maya y una vida nocturna incomparable. La mayor concentración de resorts de lujo de la cadena.",
+      "clima": {
+        "descripcion": "Tropical húmedo. Cálido y soleado todo el año. Temporada de lluvias de junio a octubre. Invierno suave y agradable.",
+        "meses": {
+          "enero":    { "max": 28, "min": 18, "lluvia": "baja" },
+          "febrero":  { "max": 28, "min": 18, "lluvia": "baja" },
+          "marzo":    { "max": 30, "min": 20, "lluvia": "baja" },
+          "abril":    { "max": 31, "min": 22, "lluvia": "baja" },
+          "mayo":     { "max": 32, "min": 24, "lluvia": "media" },
+          "junio":    { "max": 33, "min": 25, "lluvia": "media" },
+          "julio":    { "max": 33, "min": 25, "lluvia": "media" },
+          "agosto":   { "max": 33, "min": 25, "lluvia": "media" },
+          "septiembre":{ "max": 32, "min": 25, "lluvia": "alta" },
+          "octubre":  { "max": 31, "min": 23, "lluvia": "alta" },
+          "noviembre": { "max": 29, "min": 20, "lluvia": "baja" },
+          "diciembre": { "max": 28, "min": 18, "lluvia": "baja" }
+        }
+      },
+      "vuelos": [
+        { "origen": "Madrid (MAD)", "destino": "Cancún (CUN)", "duracion": "10h 15m", "escalas": 0, "escala_en": null, "precio_desde": 560, "aerolinea": "Iberia / Air Europa" },
+        { "origen": "Dallas (DFW)", "destino": "Cancún (CUN)", "duracion": "2h 45m", "escalas": 0, "escala_en": null, "precio_desde": 290, "aerolinea": "American Airlines" },
+        { "origen": "San Francisco (SFO)", "destino": "Cancún (CUN)", "duracion": "5h 30m", "escalas": 0, "escala_en": null, "precio_desde": 420, "aerolinea": "United Airlines" },
+        { "origen": "Miami (MIA)", "destino": "Cancún (CUN)", "duracion": "1h 45m", "escalas": 0, "escala_en": null, "precio_desde": 190, "aerolinea": "American Airlines" },
+        { "origen": "Nueva York (JFK)", "destino": "Cancún (CUN)", "duracion": "3h 45m", "escalas": 0, "escala_en": null, "precio_desde": 310, "aerolinea": "JetBlue / American Airlines" }
+      ],
+      "hoteles": [
+        {
+          "id": "beach-palace",
+          "nombre": "Beach Palace",
+          "tipo": "Resort Todo Incluido",
+          "descripcion": "Un resort lleno de momentos sorprendentes, en el corazón de Cancún, para familias y parejas que buscan divertirse a tope con un amplio abanico de entretenimiento a cualquier hora, y una de las mejores playas del destino.",
+          "atributos": {
+            "todo_incluido": true,
+            "golf": true,
+            "familia": true,
+            "adults_only": false,
+            "transfer_aeropuerto_gratis": "mínimo 4 noches",
+            "resort_credit": "500 USD con mínimo 4 noches",
+            "ninos_gratis": "hasta 17 años",
+            "aventura": true,
+            "relajacion_bienestar": false,
+            "hotel_boutique": false,
+            "spa": true
+          },
+          "precio_desde": 380,
+          "habitaciones": [
+            { "tipo": "Deluxe Ocean View", "capacidad": 4, "metros": 32, "precio_noche": 380 },
+            { "tipo": "Junior Suite Ocean View", "capacidad": 4, "metros": 45, "precio_noche": 480 },
+            { "tipo": "Junior Suite Ocean Front", "capacidad": 4, "metros": 45, "precio_noche": 560 },
+            { "tipo": "Master Suite Ocean View", "capacidad": 4, "metros": 65, "precio_noche": 720 },
+            { "tipo": "Presidential Suite", "capacidad": 6, "metros": 90, "precio_noche": 1400 }
+          ],
+          "restaurantes": [
+            { "nombre": "Momo", "tipo": "Asiática", "horario": "12:00 - 22:30", "dress_code": "Casual" },
+            { "nombre": "El Mirador", "tipo": "Mexicana / Internacional", "horario": "7:00 - 22:00", "dress_code": "Casual" },
+            { "nombre": "Aquamarine", "tipo": "Mariscos y cocina del mar", "horario": "13:00 - 22:00", "dress_code": "Smart casual" }
+          ],
+          "actividades": [
+            { "nombre": "Snorkel Xtreme", "descripcion": "Sorpréndete con las maravillas submarinas y en un circuito de tirolesas en plena selva.", "tipo": "Aventura" },
+            { "nombre": "ATV Xtreme Zip Lines", "descripcion": "Disfruta una aventura por la selva en cuatrimoto, 7 tirolesas de alta velocidad y un río subterráneo.", "tipo": "Aventura" },
+            { "nombre": "Gimme All", "descripcion": "Recorre la selva en tirolesas, puentes colgantes, cuatrimotos, un cenote y mucho más.", "tipo": "Aventura" },
+            { "nombre": "Clases de buceo", "descripcion": "Iniciación al buceo en aguas cristalinas del Caribe con instructor certificado.", "tipo": "Deporte acuático" }
+          ]
+        },
+        {
+          "id": "sun-palace",
+          "nombre": "Sun Palace",
+          "tipo": "Resort Todo Incluido Adults Only",
+          "descripcion": "Déjate envolver por el sol, amor, romanticismo, elegancia y lujo de este resort exclusivo para parejas en Cancún. Ven con tu ser amado, mímense juntos y descubran que este resort y ustedes, están hechos el uno para el otro.",
+          "atributos": {
+            "todo_incluido": true,
+            "golf": true,
+            "familia": false,
+            "adults_only": true,
+            "transfer_aeropuerto_gratis": "mínimo 4 noches",
+            "resort_credit": "500 USD con mínimo 4 noches",
+            "ninos_gratis": false,
+            "aventura": false,
+            "relajacion_bienestar": true,
+            "hotel_boutique": false,
+            "spa": true
+          },
+          "precio_desde": 450,
+          "habitaciones": [
+            { "tipo": "Deluxe Ocean View", "capacidad": 2, "metros": 34, "precio_noche": 450 },
+            { "tipo": "Junior Suite Ocean View", "capacidad": 2, "metros": 48, "precio_noche": 560 },
+            { "tipo": "Master Suite Ocean Front", "capacidad": 2, "metros": 70, "precio_noche": 780 },
+            { "tipo": "Penthouse Suite", "capacidad": 2, "metros": 110, "precio_noche": 1600 }
+          ],
+          "restaurantes": [
+            { "nombre": "Fuego", "tipo": "Internacional / Grill", "horario": "18:30 - 23:00", "dress_code": "Smart casual" },
+            { "nombre": "Thai", "tipo": "Tailandesa / Asiática", "horario": "12:00 - 22:30", "dress_code": "Casual" },
+            { "nombre": "Moonlight", "tipo": "Mediterránea", "horario": "18:00 - 22:30", "dress_code": "Smart casual" }
+          ],
+          "actividades": [
+            { "nombre": "Yoga al amanecer", "descripcion": "Sesión de yoga en la terraza frente al mar al salir el sol.", "tipo": "Bienestar" },
+            { "nombre": "Cena romántica en la playa", "descripcion": "Cena privada para dos a la orilla del mar con menú de degustación.", "tipo": "Romántica" },
+            { "nombre": "Tratamientos de pareja en el spa", "descripcion": "Ritual de pareja con masaje, exfoliación y baño de aromas.", "tipo": "Bienestar" },
+            { "nombre": "Golf en campo privado", "descripcion": "Acceso a campo de golf con vistas al Caribe. Clases disponibles.", "tipo": "Deporte" }
+          ]
+        },
+        {
+          "id": "moon-palace-grand-cancun",
+          "nombre": "Moon Palace The Grand - Cancún",
+          "tipo": "Resort Todo Incluido",
+          "descripcion": "Descubre la nueva era del Todo Incluido de Lujo con lujosas habitaciones, gastronomía gourmet, parque acuático, el O Spa de renombre internacional y vibrante vida nocturna te harán sentir en tu propio imperio.",
+          "atributos": {
+            "todo_incluido": true,
+            "golf": true,
+            "familia": true,
+            "adults_only": false,
+            "transfer_aeropuerto_gratis": "mínimo 4 noches",
+            "resort_credit": "500 USD con mínimo 4 noches",
+            "ninos_gratis": "hasta 17 años",
+            "aventura": true,
+            "relajacion_bienestar": true,
+            "hotel_boutique": false,
+            "spa": true
+          },
+          "precio_desde": 520,
+          "habitaciones": [
+            { "tipo": "Deluxe Ocean View", "capacidad": 4, "metros": 38, "precio_noche": 520 },
+            { "tipo": "Junior Suite Ocean View", "capacidad": 5, "metros": 55, "precio_noche": 680 },
+            { "tipo": "Master Suite Ocean Front", "capacidad": 5, "metros": 80, "precio_noche": 920 },
+            { "tipo": "Grand Presidential Suite", "capacidad": 6, "metros": 130, "precio_noche": 2100 }
+          ],
+          "restaurantes": [
+            { "nombre": "JC Steakhouse", "tipo": "Carnes premium / Internacional", "horario": "18:30 - 23:00", "dress_code": "Smart casual" },
+            { "nombre": "La Cantina", "tipo": "Mexicana", "horario": "12:00 - 22:30", "dress_code": "Casual" },
+            { "nombre": "Silk", "tipo": "Asiática / Fusión", "horario": "12:00 - 22:00", "dress_code": "Casual" },
+            { "nombre": "Mare Nostrum", "tipo": "Mediterránea", "horario": "18:00 - 22:30", "dress_code": "Smart casual" }
+          ],
+          "actividades": [
+            { "nombre": "Parque acuático Moon", "descripcion": "Toboganes, piscinas de olas y atracciones acuáticas para todas las edades.", "tipo": "Familiar" },
+            { "nombre": "O Spa", "descripcion": "Spa de referencia internacional con tratamientos exclusivos y terapias holísticas.", "tipo": "Bienestar" },
+            { "nombre": "Shows nocturnos", "descripcion": "Espectáculos de entretenimiento en directo cada noche en el teatro del resort.", "tipo": "Entretenimiento" },
+            { "nombre": "Gimme All", "descripcion": "Excursión de aventura por la selva con tirolesas, cenotes y cuatrimotos.", "tipo": "Aventura" }
+          ]
+        },
+        {
+          "id": "moon-palace-cancun",
+          "nombre": "Moon Palace Cancún",
+          "tipo": "Resort Todo Incluido",
+          "descripcion": "Día y noche, este resort está lleno de energía y posibilidades con un sinfín de oferta gastronómica, un campo de golf diseñado por Jack Nicklaus, espectáculos y vida nocturna increíbles, y áreas especialmente creadas para niños y adolescentes.",
+          "atributos": {
+            "todo_incluido": true,
+            "golf": true,
+            "familia": true,
+            "adults_only": false,
+            "transfer_aeropuerto_gratis": "mínimo 4 noches",
+            "resort_credit": "500 USD con mínimo 4 noches",
+            "ninos_gratis": "hasta 17 años",
+            "aventura": true,
+            "relajacion_bienestar": true,
+            "hotel_boutique": false,
+            "spa": true
+          },
+          "precio_desde": 410,
+          "habitaciones": [
+            { "tipo": "Deluxe Garden View", "capacidad": 4, "metros": 32, "precio_noche": 410 },
+            { "tipo": "Deluxe Ocean View", "capacidad": 4, "metros": 32, "precio_noche": 460 },
+            { "tipo": "Junior Suite Ocean View", "capacidad": 5, "metros": 50, "precio_noche": 590 },
+            { "tipo": "Master Suite Ocean Front", "capacidad": 5, "metros": 75, "precio_noche": 860 },
+            { "tipo": "Presidential Suite", "capacidad": 6, "metros": 120, "precio_noche": 1950 }
+          ],
+          "restaurantes": [
+            { "nombre": "Caporales", "tipo": "Mexicana", "horario": "12:00 - 22:30", "dress_code": "Casual" },
+            { "nombre": "Góndola", "tipo": "Italiana", "horario": "18:00 - 22:30", "dress_code": "Smart casual" },
+            { "nombre": "Jade Garden", "tipo": "China / Asiática", "horario": "12:00 - 22:00", "dress_code": "Casual" },
+            { "nombre": "Neptune", "tipo": "Mariscos y cocina del mar", "horario": "13:00 - 22:00", "dress_code": "Smart casual" }
+          ],
+          "actividades": [
+            { "nombre": "Golf Jack Nicklaus", "descripcion": "Campo de golf de 18 hoyos diseñado por Jack Nicklaus con vistas al Caribe.", "tipo": "Deporte" },
+            { "nombre": "Snorkel Xtreme", "descripcion": "Circuito de snorkel y tirolesas en plena naturaleza.", "tipo": "Aventura" },
+            { "nombre": "Club infantil Wired", "descripcion": "Programa de actividades supervisadas para niños y adolescentes todo el día.", "tipo": "Familiar" },
+            { "nombre": "Vida nocturna", "descripcion": "Bares temáticos, discoteca y shows en directo hasta la madrugada.", "tipo": "Entretenimiento" }
+          ]
+        },
+        {
+          "id": "moon-palace-nizuc",
+          "nombre": "Moon Palace Nizuc",
+          "tipo": "Resort Todo Incluido",
+          "descripcion": "Este santuario Todo Incluido ofrece a las familias una mezcla definitiva de relajación y aventura, con un campo de golf diseñado por Jack Nicklaus de 27 hoyos, finas habitaciones con vistas al mar, increíbles shows y restaurantes de clase mundial.",
+          "atributos": {
+            "todo_incluido": true,
+            "golf": true,
+            "familia": true,
+            "adults_only": false,
+            "transfer_aeropuerto_gratis": "mínimo 4 noches",
+            "resort_credit": "500 USD con mínimo 4 noches",
+            "ninos_gratis": "hasta 17 años",
+            "aventura": true,
+            "relajacion_bienestar": true,
+            "hotel_boutique": false,
+            "spa": true
+          },
+          "precio_desde": 490,
+          "habitaciones": [
+            { "tipo": "Deluxe Ocean View", "capacidad": 4, "metros": 35, "precio_noche": 490 },
+            { "tipo": "Junior Suite Ocean View", "capacidad": 5, "metros": 52, "precio_noche": 640 },
+            { "tipo": "Swim-up Suite", "capacidad": 4, "metros": 52, "precio_noche": 780 },
+            { "tipo": "Master Suite Ocean Front", "capacidad": 5, "metros": 80, "precio_noche": 980 },
+            { "tipo": "Presidential Suite", "capacidad": 6, "metros": 130, "precio_noche": 2200 }
+          ],
+          "restaurantes": [
+            { "nombre": "Nizuc Kitchen", "tipo": "Internacional / Buffet gourmet", "horario": "7:00 - 22:00", "dress_code": "Casual" },
+            { "nombre": "Sakura", "tipo": "Japonesa", "horario": "12:00 - 22:30", "dress_code": "Casual" },
+            { "nombre": "La Palapa", "tipo": "Mexicana / Fusión", "horario": "12:00 - 22:00", "dress_code": "Casual" },
+            { "nombre": "Bravo", "tipo": "Italiana", "horario": "18:00 - 23:00", "dress_code": "Smart casual" }
+          ],
+          "actividades": [
+            { "nombre": "Golf Jack Nicklaus 27 hoyos", "descripcion": "El mayor campo de golf de la cadena, diseñado por Jack Nicklaus. 27 hoyos con vista al Caribe.", "tipo": "Deporte" },
+            { "nombre": "ATV Xtreme Zip Lines", "descripcion": "Cuatrimotos, tirolesas y río subterráneo en la selva maya.", "tipo": "Aventura" },
+            { "nombre": "Parque acuático", "descripcion": "Área acuática con toboganes y piscinas temáticas para todas las edades.", "tipo": "Familiar" },
+            { "nombre": "Tours en cenote", "descripcion": "Visita a los cenotes sagrados mayas con snorkel en aguas cristalinas.", "tipo": "Cultural / Aventura" }
+          ]
+        },
+        {
+          "id": "le-blanc-cancun",
+          "nombre": "Le Blanc Spa Resort Cancún",
+          "tipo": "Resort de Lujo Adults Only",
+          "descripcion": "Bienvenido al resort #1 en Cancún según TripAdvisor. Este paraíso de la elegancia y lujo sin límites está situado en una de las playas más hermosas de Cancún. Le Blanc Spa Resort Cancún será tu santuario privado. Disfruta sólo de lo mejor y con el auténtico espíritu mexicano.",
+          "atributos": {
+            "todo_incluido": false,
+            "golf": true,
+            "familia": false,
+            "adults_only": true,
+            "transfer_aeropuerto_gratis": "mínimo 4 noches",
+            "resort_credit": "no incluido",
+            "ninos_gratis": false,
+            "aventura": false,
+            "relajacion_bienestar": true,
+            "hotel_boutique": false,
+            "spa": true
+          },
+          "precio_desde": 820,
+          "habitaciones": [
+            { "tipo": "Classic Ocean View", "capacidad": 2, "metros": 40, "precio_noche": 820 },
+            { "tipo": "Superior Ocean View", "capacidad": 2, "metros": 50, "precio_noche": 980 },
+            { "tipo": "Deluxe Ocean Front", "capacidad": 2, "metros": 55, "precio_noche": 1180 },
+            { "tipo": "Master Suite Ocean Front", "capacidad": 2, "metros": 80, "precio_noche": 1650 },
+            { "tipo": "Penthouse Suite", "capacidad": 2, "metros": 140, "precio_noche": 3200 }
+          ],
+          "restaurantes": [
+            { "nombre": "Yama", "tipo": "Asiática / Japonesa", "horario": "12:00 - 22:30", "dress_code": "Smart casual" },
+            { "nombre": "Blanc", "tipo": "Cocina de autor / Alta cocina", "horario": "18:30 - 23:00", "dress_code": "Elegant casual" },
+            { "nombre": "Balcón del Mar", "tipo": "Mediterránea", "horario": "12:00 - 22:00", "dress_code": "Smart casual" }
+          ],
+          "actividades": [
+            { "nombre": "Le Blanc Spa", "descripcion": "El spa más galardonado de Cancún. Tratamientos exclusivos con ingredientes locales y rituales ancestrales.", "tipo": "Bienestar" },
+            { "nombre": "Cena privada en la playa", "descripcion": "Mesa privada a la orilla del mar con menú diseñado por el chef ejecutivo.", "tipo": "Romántica" },
+            { "nombre": "Clase de mixología mexicana", "descripcion": "Aprende a preparar cócteles con mezcal y tequilas premium con el bartender del resort.", "tipo": "Gastronómica" },
+            { "nombre": "Golf en campo privado", "descripcion": "Acceso a campo de golf con caddie incluido y traslado del resort.", "tipo": "Deporte" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "playa-del-carmen",
+      "nombre": "Playa del Carmen",
+      "pais": "México",
+      "descripcion": "La Quinta Avenida, las playas de arena blanca y el ambiente cosmopolita hacen de Playa del Carmen uno de los destinos más seductores de la Riviera Maya. Base perfecta para explorar cenotes, Tulum y la barrera de coral.",
+      "clima": {
+        "descripcion": "Tropical húmedo. Muy similar a Cancún. Inviernos suaves, veranos cálidos con lluvias vespertinas.",
+        "meses": {
+          "enero":    { "max": 28, "min": 18, "lluvia": "baja" },
+          "febrero":  { "max": 29, "min": 18, "lluvia": "baja" },
+          "marzo":    { "max": 30, "min": 20, "lluvia": "baja" },
+          "abril":    { "max": 31, "min": 22, "lluvia": "baja" },
+          "mayo":     { "max": 32, "min": 24, "lluvia": "media" },
+          "junio":    { "max": 33, "min": 25, "lluvia": "media" },
+          "julio":    { "max": 33, "min": 25, "lluvia": "media" },
+          "agosto":   { "max": 33, "min": 25, "lluvia": "media" },
+          "septiembre":{ "max": 32, "min": 24, "lluvia": "alta" },
+          "octubre":  { "max": 31, "min": 23, "lluvia": "alta" },
+          "noviembre": { "max": 29, "min": 20, "lluvia": "baja" },
+          "diciembre": { "max": 28, "min": 19, "lluvia": "baja" }
+        }
+      },
+      "vuelos": [
+        { "origen": "Madrid (MAD)", "destino": "Cancún (CUN)", "duracion": "10h 15m", "escalas": 0, "escala_en": null, "precio_desde": 560, "aerolinea": "Iberia / Air Europa", "nota": "Vuelo a Cancún. Playa del Carmen a 45 min en traslado." },
+        { "origen": "Dallas (DFW)", "destino": "Cancún (CUN)", "duracion": "2h 45m", "escalas": 0, "escala_en": null, "precio_desde": 290, "aerolinea": "American Airlines", "nota": "Vuelo a Cancún. Playa del Carmen a 45 min en traslado." },
+        { "origen": "San Francisco (SFO)", "destino": "Cancún (CUN)", "duracion": "5h 30m", "escalas": 0, "escala_en": null, "precio_desde": 420, "aerolinea": "United Airlines", "nota": "Vuelo a Cancún. Playa del Carmen a 45 min en traslado." },
+        { "origen": "Miami (MIA)", "destino": "Cancún (CUN)", "duracion": "1h 45m", "escalas": 0, "escala_en": null, "precio_desde": 190, "aerolinea": "American Airlines", "nota": "Vuelo a Cancún. Playa del Carmen a 45 min en traslado." },
+        { "origen": "Nueva York (JFK)", "destino": "Cancún (CUN)", "duracion": "3h 45m", "escalas": 0, "escala_en": null, "precio_desde": 310, "aerolinea": "JetBlue", "nota": "Vuelo a Cancún. Playa del Carmen a 45 min en traslado." }
+      ],
+      "hoteles": [
+        {
+          "id": "playacar-palace",
+          "nombre": "Playacar Palace",
+          "tipo": "Resort Todo Incluido",
+          "descripcion": "Disfruta de las cristalinas aguas turquesa y fina arena blanca en este resort para toda la familia o para disfrutar con amigos que además, te permitirá estar a unos pasos de la famosa Quinta Avenida, un extenso corredor comercial que te atrapará.",
+          "atributos": {
+            "todo_incluido": true,
+            "golf": true,
+            "familia": true,
+            "adults_only": false,
+            "transfer_aeropuerto_gratis": "mínimo 4 noches",
+            "resort_credit": "500 USD con mínimo 4 noches",
+            "ninos_gratis": "hasta 17 años",
+            "aventura": true,
+            "relajacion_bienestar": true,
+            "hotel_boutique": true,
+            "spa": true
+          },
+          "precio_desde": 440,
+          "habitaciones": [
+            { "tipo": "Deluxe Garden View", "capacidad": 4, "metros": 30, "precio_noche": 440 },
+            { "tipo": "Deluxe Ocean View", "capacidad": 4, "metros": 30, "precio_noche": 510 },
+            { "tipo": "Junior Suite Ocean View", "capacidad": 5, "metros": 48, "precio_noche": 650 },
+            { "tipo": "Master Suite", "capacidad": 4, "metros": 70, "precio_noche": 920 }
+          ],
+          "restaurantes": [
+            { "nombre": "Trattoria", "tipo": "Italiana", "horario": "18:00 - 22:30", "dress_code": "Smart casual" },
+            { "nombre": "Momo", "tipo": "Asiática", "horario": "12:00 - 22:30", "dress_code": "Casual" },
+            { "nombre": "La Quinta", "tipo": "Mexicana / Internacional", "horario": "7:00 - 22:00", "dress_code": "Casual" }
+          ],
+          "actividades": [
+            { "nombre": "Quinta Avenida a pie", "descripcion": "El resort está a pasos del corredor comercial y gastronómico más famoso del Caribe mexicano.", "tipo": "Cultural" },
+            { "nombre": "Snorkel en arrecifes", "descripcion": "Exploración del segundo arrecife de coral más grande del mundo.", "tipo": "Deporte acuático" },
+            { "nombre": "Excursión a Tulum", "descripcion": "Visita a las ruinas mayas de Tulum con guía y tiempo libre en la playa.", "tipo": "Cultural" },
+            { "nombre": "Cenotes del Carmen", "descripcion": "Visita a los cenotes más espectaculares de la Riviera Maya a pocos kilómetros del resort.", "tipo": "Cultural / Aventura" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cozumel",
+      "nombre": "Cozumel",
+      "pais": "México",
+      "descripcion": "La isla del buceo por excelencia. Cozumel alberga algunos de los arrecifes de coral más espectaculares del mundo, aguas de visibilidad excepcional y una atmósfera tranquila que atrae a quienes buscan el mar en estado puro.",
+      "clima": {
+        "descripcion": "Tropical húmedo. Clima muy estable. Excelente visibilidad submarina todo el año. Mejor temporada de buceo de diciembre a abril.",
+        "meses": {
+          "enero":    { "max": 28, "min": 20, "lluvia": "baja" },
+          "febrero":  { "max": 28, "min": 20, "lluvia": "baja" },
+          "marzo":    { "max": 30, "min": 22, "lluvia": "baja" },
+          "abril":    { "max": 31, "min": 23, "lluvia": "baja" },
+          "mayo":     { "max": 32, "min": 24, "lluvia": "media" },
+          "junio":    { "max": 32, "min": 25, "lluvia": "media" },
+          "julio":    { "max": 32, "min": 25, "lluvia": "media" },
+          "agosto":   { "max": 32, "min": 25, "lluvia": "media" },
+          "septiembre":{ "max": 31, "min": 24, "lluvia": "alta" },
+          "octubre":  { "max": 30, "min": 23, "lluvia": "alta" },
+          "noviembre": { "max": 29, "min": 21, "lluvia": "media" },
+          "diciembre": { "max": 28, "min": 20, "lluvia": "baja" }
+        }
+      },
+      "vuelos": [
+        { "origen": "Madrid (MAD)", "destino": "Cozumel (CZM)", "duracion": "12h 30m", "escalas": 1, "escala_en": "Miami", "precio_desde": 640, "aerolinea": "Iberia / American Airlines" },
+        { "origen": "Dallas (DFW)", "destino": "Cozumel (CZM)", "duracion": "3h 20m", "escalas": 0, "escala_en": null, "precio_desde": 310, "aerolinea": "American Airlines" },
+        { "origen": "San Francisco (SFO)", "destino": "Cozumel (CZM)", "duracion": "6h 50m", "escalas": 1, "escala_en": "Dallas", "precio_desde": 450, "aerolinea": "American Airlines" },
+        { "origen": "Miami (MIA)", "destino": "Cozumel (CZM)", "duracion": "1h 50m", "escalas": 0, "escala_en": null, "precio_desde": 200, "aerolinea": "American Airlines" },
+        { "origen": "Nueva York (JFK)", "destino": "Cozumel (CZM)", "duracion": "4h 10m", "escalas": 0, "escala_en": null, "precio_desde": 330, "aerolinea": "JetBlue" }
+      ],
+      "hoteles": [
+        {
+          "id": "cozumel-palace",
+          "nombre": "Cozumel Palace",
+          "tipo": "Resort Todo Incluido",
+          "descripcion": "Sumérgete en el lujo para las familias, parejas y los amantes del buceo. Si te apasionan los deportes acuáticos, te encantará todo lo que Cozumel Palace tiene para ti.",
+          "atributos": {
+            "todo_incluido": true,
+            "golf": true,
+            "familia": true,
+            "adults_only": false,
+            "transfer_aeropuerto_gratis": "mínimo 4 noches",
+            "resort_credit": "500 USD con mínimo 4 noches",
+            "ninos_gratis": "hasta 17 años",
+            "aventura": true,
+            "relajacion_bienestar": false,
+            "hotel_boutique": true,
+            "spa": true
+          },
+          "precio_desde": 390,
+          "habitaciones": [
+            { "tipo": "Deluxe Ocean View", "capacidad": 4, "metros": 30, "precio_noche": 390 },
+            { "tipo": "Junior Suite Ocean View", "capacidad": 4, "metros": 46, "precio_noche": 510 },
+            { "tipo": "Junior Suite Ocean Front", "capacidad": 4, "metros": 46, "precio_noche": 590 },
+            { "tipo": "Master Suite", "capacidad": 4, "metros": 70, "precio_noche": 880 }
+          ],
+          "restaurantes": [
+            { "nombre": "Bugambilias", "tipo": "Mexicana", "horario": "7:00 - 22:00", "dress_code": "Casual" },
+            { "nombre": "Flamingos", "tipo": "Mariscos / Mexicana", "horario": "12:00 - 22:30", "dress_code": "Casual" },
+            { "nombre": "Momo", "tipo": "Asiática", "horario": "12:00 - 22:00", "dress_code": "Casual" }
+          ],
+          "actividades": [
+            { "nombre": "Paseo en catamarán", "descripcion": "Navega, practica snorkel en el arrecife de Palancar en Cozumel y visita un club de playa privado.", "tipo": "Deporte acuático" },
+            { "nombre": "Esnórquel de 3 arrecifes y barco con fondo de cristal", "descripcion": "Conoce la vida submarina de Cozumel y practica snorkel en los arrecifes Palancar y Colombia.", "tipo": "Deporte acuático" },
+            { "nombre": "Buceo certificado", "descripcion": "Inmersiones guiadas en los arrecifes de Cozumel, declarados Patrimonio de la Humanidad.", "tipo": "Deporte acuático" },
+            { "nombre": "Visita al centro de Cozumel", "descripcion": "Paseo por el malecón, mercado de artesanías y gastronomía local.", "tipo": "Cultural" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "los-cabos",
+      "nombre": "Los Cabos",
+      "pais": "México",
+      "descripcion": "Donde el desierto abraza el mar. Los Cabos es un destino singular: paisajes áridos, ballenas jorobadas, pesca deportiva de clase mundial y resorts de lujo que aprovechan la belleza única de Baja California.",
+      "clima": {
+        "descripcion": "Desértico árido con influencia marina. Soleado casi todo el año. Veranos muy calurosos. Temporada de ballenas de diciembre a abril.",
+        "meses": {
+          "enero":    { "max": 23, "min": 12, "lluvia": "baja" },
+          "febrero":  { "max": 24, "min": 13, "lluvia": "baja" },
+          "marzo":    { "max": 26, "min": 15, "lluvia": "baja" },
+          "abril":    { "max": 28, "min": 16, "lluvia": "baja" },
+          "mayo":     { "max": 31, "min": 19, "lluvia": "baja" },
+          "junio":    { "max": 34, "min": 22, "lluvia": "baja" },
+          "julio":    { "max": 36, "min": 25, "lluvia": "media" },
+          "agosto":   { "max": 36, "min": 26, "lluvia": "media" },
+          "septiembre":{ "max": 35, "min": 25, "lluvia": "alta" },
+          "octubre":  { "max": 31, "min": 21, "lluvia": "baja" },
+          "noviembre": { "max": 27, "min": 16, "lluvia": "baja" },
+          "diciembre": { "max": 24, "min": 13, "lluvia": "baja" }
+        }
+      },
+      "vuelos": [
+        { "origen": "Madrid (MAD)", "destino": "Los Cabos (SJD)", "duracion": "13h 30m", "escalas": 1, "escala_en": "Dallas", "precio_desde": 720, "aerolinea": "Iberia / American Airlines" },
+        { "origen": "Dallas (DFW)", "destino": "Los Cabos (SJD)", "duracion": "2h 30m", "escalas": 0, "escala_en": null, "precio_desde": 260, "aerolinea": "American Airlines" },
+        { "origen": "San Francisco (SFO)", "destino": "Los Cabos (SJD)", "duracion": "2h 20m", "escalas": 0, "escala_en": null, "precio_desde": 240, "aerolinea": "United Airlines / Alaska" },
+        { "origen": "Miami (MIA)", "destino": "Los Cabos (SJD)", "duracion": "4h 50m", "escalas": 0, "escala_en": null, "precio_desde": 380, "aerolinea": "American Airlines" },
+        { "origen": "Nueva York (JFK)", "destino": "Los Cabos (SJD)", "duracion": "5h 40m", "escalas": 0, "escala_en": null, "precio_desde": 420, "aerolinea": "JetBlue / American Airlines" }
+      ],
+      "hoteles": [
+        {
+          "id": "le-blanc-los-cabos",
+          "nombre": "Le Blanc Spa Resort Los Cabos",
+          "tipo": "Resort de Lujo Adults Only",
+          "descripcion": "Aquí el desierto se encuentra con el mar. Le Blanc Spa Resort Los Cabos aprovecha la belleza de este tesoro tropical y añade un aire de lujo a la experiencia. Este impresionante complejo brinda un escape que mezcla la aventura con la intimidad.",
+          "atributos": {
+            "todo_incluido": false,
+            "golf": true,
+            "familia": false,
+            "adults_only": true,
+            "transfer_aeropuerto_gratis": "mínimo 4 noches",
+            "resort_credit": "no incluido",
+            "ninos_gratis": false,
+            "aventura": false,
+            "relajacion_bienestar": true,
+            "hotel_boutique": true,
+            "spa": true
+          },
+          "precio_desde": 980,
+          "habitaciones": [
+            { "tipo": "Classic Ocean View", "capacidad": 2, "metros": 42, "precio_noche": 980 },
+            { "tipo": "Superior Ocean View", "capacidad": 2, "metros": 52, "precio_noche": 1180 },
+            { "tipo": "Deluxe Ocean Front", "capacidad": 2, "metros": 58, "precio_noche": 1420 },
+            { "tipo": "Master Suite Ocean Front", "capacidad": 2, "metros": 85, "precio_noche": 1980 },
+            { "tipo": "Penthouse Suite", "capacidad": 2, "metros": 150, "precio_noche": 3800 }
+          ],
+          "restaurantes": [
+            { "nombre": "Bella", "tipo": "Italiana / Alta cocina", "horario": "18:30 - 23:00", "dress_code": "Elegant casual" },
+            { "nombre": "Habibi", "tipo": "Internacional / Mediterránea", "horario": "12:00 - 22:30", "dress_code": "Smart casual" },
+            { "nombre": "Desierto Bar", "tipo": "Coctelería premium / Snacks", "horario": "11:00 - 24:00", "dress_code": "Casual" }
+          ],
+          "actividades": [
+            { "nombre": "Avistamiento de ballenas en catamarán de lujo", "descripcion": "Navega en un lujoso catamarán junto a los seres vivos más grandes del planeta.", "tipo": "Naturaleza", "temporada": "Diciembre a abril" },
+            { "nombre": "Outback and Camel Ride Safari", "descripcion": "Prepara tus selfies en este paseo por el desierto a bordo de unos amistosos camellos.", "tipo": "Aventura" },
+            { "nombre": "Can-Am X3 Turbo Adventure", "descripcion": "Vive una experiencia de adrenalina pura al recorrer el desierto y la selva de Baja California.", "tipo": "Aventura" },
+            { "nombre": "Le Blanc Spa", "descripcion": "Rituales de spa que fusionan técnicas ancestrales mexicanas con terapias internacionales.", "tipo": "Bienestar" },
+            { "nombre": "Pesca deportiva", "descripcion": "Salida de pesca en alta mar con equipo completo y capitán experto.", "tipo": "Deporte" }
+          ]
+        }
+      ]
+    }
+  ]
+}
