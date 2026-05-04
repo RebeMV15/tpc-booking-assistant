@@ -149,26 +149,27 @@ export default function App() {
   };
 
   const doApiCall = async (userText, fromComponent = false) => {
-    // Capture last assistant turn BEFORE mutating history — used for context injection
-    const lastAssistant = [...apiHistoryRef.current].reverse().find(m => m.role === 'assistant');
+    const FALLBACK_PREFIX = 'Disculpa, no he procesado';
+    // Skip fallback messages — injecting them as context gives the model useless noise
+    const lastAssistant = [...apiHistoryRef.current].reverse().find(
+      m => m.role === 'assistant' && !m.content.startsWith(FALLBACK_PREFIX)
+    );
 
     apiHistoryRef.current = [...apiHistoryRef.current, { role: 'user', content: userText }];
 
-    // Build a context note appended to the system prompt for this call only.
-    // This is the key fix: the model receives explicit context instead of having
-    // to infer it from a long conversation history.
     let contextNote = '';
     if (fromComponent) {
       contextNote = `\n\n⚠️ SELECCIÓN DE COMPONENTE: El usuario hizo clic en la UI y seleccionó "${userText}". Confirma la selección verbalmente y avanza al siguiente paso. El campo "text" NO puede estar vacío.`;
-    } else if (userText.trim().split(/\s+/).length <= 5 && lastAssistant) {
+    } else if (lastAssistant) {
       contextNote = `\n\nCONTEXTO: El usuario responde "${userText}" directamente a tu última intervención: "${lastAssistant.content.slice(0, 300)}". Interpreta su respuesta en este contexto. El campo "text" NO puede estar vacío.`;
     }
 
-    // Prefill: the last message is a partial assistant turn starting with '{"'.
-    // The API returns only the continuation, so we prepend '{"' when parsing.
-    // This structurally forces the model to complete a valid JSON object and
-    // prevents it from returning an empty or non-JSON response.
-    const PREFILL = '{"';
+    // Prefill: the last message is a partial assistant turn starting with '{'.
+    // The model must complete the JSON object. The API returns only the
+    // continuation, so we prepend '{' when parsing. Using just '{' (not '{"')
+    // avoids a double-quote bug where the model re-emits the opening quote of
+    // the first key, producing invalid JSON like {""intent":...}.
+    const PREFILL = '{';
     const callApi = (extraNote) => fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
