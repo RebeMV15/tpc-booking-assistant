@@ -150,7 +150,7 @@ FORMATO DE RESPUESTA OBLIGATORIO:
   }
 }
 
-REGLA FUNDAMENTAL: cuando response_type es "text", component.id es null y component.data es {}. Cuando se activa un componente, text puede ser vacío o una frase introductoria breve.
+REGLA FUNDAMENTAL: cuando response_type es "text", component.id es null y component.data es {}. Cuando se activa un componente, text DEBE contener siempre una frase de introducción o confirmación, aunque sea breve. Nunca vacío.
 
 COMPONENTES DISPONIBLES:
 

@@ -164,6 +164,11 @@ export default function App() {
       contextNote = `\n\nCONTEXTO: El usuario responde "${userText}" directamente a tu última intervención: "${lastAssistant.content.slice(0, 300)}". Interpreta su respuesta en este contexto. El campo "text" NO puede estar vacío.`;
     }
 
+    // Prefill: the last message is a partial assistant turn starting with '{"'.
+    // The API returns only the continuation, so we prepend '{"' when parsing.
+    // This structurally forces the model to complete a valid JSON object and
+    // prevents it from returning an empty or non-JSON response.
+    const PREFILL = '{"';
     const callApi = (extraNote) => fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -171,7 +176,7 @@ export default function App() {
         model: 'claude-sonnet-4-6',
         max_tokens: 4096,
         system: buildSystemPrompt() + contextNote + extraNote,
-        messages: apiHistoryRef.current,
+        messages: [...apiHistoryRef.current, { role: 'assistant', content: PREFILL }],
       }),
     });
 
@@ -183,14 +188,16 @@ export default function App() {
         console.error('API error:', res.status, data);
         throw new Error(data?.error?.message || `HTTP ${res.status}`);
       }
-      let rawText = data.content?.[0]?.text || '';
+      const continuation = data.content?.[0]?.text || '';
+      let rawText = continuation ? PREFILL + continuation : '';
 
-      // Retry once on empty response with an emergency prompt
+      // Retry once if still empty (e.g. API returned empty body)
       if (!rawText || !parseResponse(rawText).text?.trim()) {
         console.warn('Empty/invalid response, retrying:', rawText.slice(0, 200));
         res = await callApi('\n\n🚨 RESPUESTA ANTERIOR VACÍA. El campo "text" es OBLIGATORIO. Responde con texto ahora.');
         data = await res.json();
-        rawText = data.content?.[0]?.text || '';
+        const retryContinuation = data.content?.[0]?.text || '';
+        rawText = retryContinuation ? PREFILL + retryContinuation : '';
       }
 
       const parsed = parseResponse(rawText);
