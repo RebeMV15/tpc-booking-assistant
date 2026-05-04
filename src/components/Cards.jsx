@@ -127,7 +127,7 @@ function Carousel({ images, startIndex = 0 }) {
       ))}
       <div style={{ position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 5 }}>
         {images.map((_, i) => (
-          <button key={i} onClick={() => go(i)} aria-label={`Imagen ${i + 1}`}
+          <button key={i} onClick={e => { e.stopPropagation(); go(i); }} aria-label={`Imagen ${i + 1}`}
             style={{ width: i === current ? 18 : 6, height: 6, borderRadius: 3, background: i === current ? '#fff' : 'rgba(255,255,255,0.6)', border: 'none', cursor: 'pointer', padding: 0, transition: 'all 0.3s ease' }}
           />
         ))}

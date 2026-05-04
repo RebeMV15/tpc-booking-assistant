@@ -158,7 +158,7 @@ export default function App() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-5',
+          model: 'claude-sonnet-4-6',
           max_tokens: 4096,
           system: buildSystemPrompt(),
           messages: apiHistoryRef.current,
@@ -194,7 +194,9 @@ export default function App() {
   };
 
   const handleComponentSelect = (text) => {
-    setTimeout(() => sendMessage(text), 0);
+    setInput('');
+    setUiMessages(prev => [...prev, { role: 'user', content: text }]);
+    callChain.current = callChain.current.then(() => doApiCall(text));
   };
 
   // ─── LANDING PAGE ───────────────────────────────────────────────────────────

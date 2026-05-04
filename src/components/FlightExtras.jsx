@@ -80,7 +80,7 @@ function Carousel({ images, startIndex = 0 }) {
       ))}
       <div style={{ position: 'absolute', bottom: 6, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 4 }}>
         {images.map((_, i) => (
-          <button key={i} onClick={() => go(i)} aria-label={`Imagen ${i+1}`}
+          <button key={i} onClick={e => { e.stopPropagation(); go(i); }} aria-label={`Imagen ${i+1}`}
             style={{ width: i === current ? 16 : 5, height: 5, borderRadius: 3, background: i === current ? '#fff' : 'rgba(255,255,255,0.6)', border: 'none', cursor: 'pointer', padding: 0, transition: 'all 0.3s ease' }}
           />
         ))}
@@ -196,7 +196,7 @@ export function ExtraCards({ data, onSelect }) {
                 {extra.dress_code && <span style={{ fontSize: 11, color: TEXT_MUTED, fontFamily: 'Montserrat, sans-serif' }}>{extra.dress_code}</span>}
               </div>
               <div style={{ fontSize: 13, color: TEXT_SECONDARY, lineHeight: 1.5, marginBottom: 10, fontFamily: 'Montserrat, sans-serif' }}>{extra.descripcion}</div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 <div>
                   {extra.sin_cargo
                     ? <span style={{ fontSize: 12, color: GREEN, fontWeight: 600, fontFamily: 'Montserrat, sans-serif' }}>Sin cargo</span>
@@ -208,7 +208,7 @@ export function ExtraCards({ data, onSelect }) {
                     ? `Quiero prerreservar en ${extra.nombre}${extra.hotel ? ' del ' + extra.hotel : ''}`
                     : `Sí, añade ${extra.nombre} a mi reserva`)}
                     style={{ fontSize: 12, background: 'rgba(39,76,105,0.07)', border: `1px solid rgba(39,76,105,0.45)`, color: BLUE, borderRadius: 4, padding: '6px 14px', cursor: 'pointer', fontFamily: 'Montserrat, sans-serif', fontWeight: 500 }}>
-                    {isRestaurant ? 'Prerreservar' : 'Añadir'}
+                    {isRestaurant ? 'Pre-reservar' : 'Añadir'}
                   </button>
                   <button onClick={() => onSelect(`No, gracias`)}
                     style={{ fontSize: 12, background: 'transparent', border: `1px solid rgba(39,76,105,0.2)`, color: TEXT_SECONDARY, borderRadius: 4, padding: '6px 10px', cursor: 'pointer', fontFamily: 'Montserrat, sans-serif' }}>
