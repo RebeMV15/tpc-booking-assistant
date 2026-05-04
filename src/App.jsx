@@ -149,46 +149,64 @@ export default function App() {
   };
 
   const doApiCall = async (userText, fromComponent = false) => {
-    const newUserMsg = { role: 'user', content: userText };
-    apiHistoryRef.current = [...apiHistoryRef.current, newUserMsg];
+    // Capture last assistant turn BEFORE mutating history — used for context injection
+    const lastAssistant = [...apiHistoryRef.current].reverse().find(m => m.role === 'assistant');
 
-    const systemPrompt = fromComponent
-      ? buildSystemPrompt() + `\n\n⚠️ ACCIÓN INMEDIATA REQUERIDA: El usuario acaba de hacer clic en un componente de UI y ha seleccionado: "${userText}". El campo "text" de tu respuesta NO puede estar vacío. Debes: (1) confirmar verbalmente lo seleccionado, (2) avanzar al siguiente paso del proceso de reserva.`
-      : buildSystemPrompt();
+    apiHistoryRef.current = [...apiHistoryRef.current, { role: 'user', content: userText }];
+
+    // Build a context note appended to the system prompt for this call only.
+    // This is the key fix: the model receives explicit context instead of having
+    // to infer it from a long conversation history.
+    let contextNote = '';
+    if (fromComponent) {
+      contextNote = `\n\n⚠️ SELECCIÓN DE COMPONENTE: El usuario hizo clic en la UI y seleccionó "${userText}". Confirma la selección verbalmente y avanza al siguiente paso. El campo "text" NO puede estar vacío.`;
+    } else if (userText.trim().split(/\s+/).length <= 5 && lastAssistant) {
+      contextNote = `\n\nCONTEXTO: El usuario responde "${userText}" directamente a tu última intervención: "${lastAssistant.content.slice(0, 300)}". Interpreta su respuesta en este contexto. El campo "text" NO puede estar vacío.`;
+    }
+
+    const callApi = (extraNote) => fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 4096,
+        system: buildSystemPrompt() + contextNote + extraNote,
+        messages: apiHistoryRef.current,
+      }),
+    });
 
     setLoading(true);
     try {
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-6',
-          max_tokens: 4096,
-          system: systemPrompt,
-          messages: apiHistoryRef.current,
-        }),
-      });
-      const data = await res.json();
+      let res = await callApi('');
+      let data = await res.json();
       if (!res.ok) {
         console.error('API error:', res.status, data);
         throw new Error(data?.error?.message || `HTTP ${res.status}`);
       }
-      const rawText = data.content?.[0]?.text || '';
-      if (!rawText) console.warn('Empty response from API:', JSON.stringify(data).slice(0, 500));
+      let rawText = data.content?.[0]?.text || '';
+
+      // Retry once on empty response with an emergency prompt
+      if (!rawText || !parseResponse(rawText).text?.trim()) {
+        console.warn('Empty/invalid response, retrying:', rawText.slice(0, 200));
+        res = await callApi('\n\n🚨 RESPUESTA ANTERIOR VACÍA. El campo "text" es OBLIGATORIO. Responde con texto ahora.');
+        data = await res.json();
+        rawText = data.content?.[0]?.text || '';
+      }
+
       const parsed = parseResponse(rawText);
 
       if ((!parsed.text || !parsed.text.trim()) && !parsed.component?.id) {
         parsed.text = 'Disculpa, no he procesado bien tu respuesta. ¿Puedes repetírmelo con un poco más de detalle?';
       }
 
-      // Store only the human-readable text in history, not the raw JSON.
-      // The model reads its own history to find context; raw JSON in history
-      // makes short user replies ambiguous and causes empty responses.
-      const historyContent = parsed.text && parsed.text.trim() ? parsed.text : rawText;
+      // Store only readable text in history (not raw JSON) so future short
+      // replies can be interpreted without wading through component data.
+      const historyContent = parsed.text?.trim() || rawText;
       apiHistoryRef.current = [...apiHistoryRef.current, { role: 'assistant', content: historyContent }];
 
       setUiMessages(prev => [...prev, { role: 'assistant', parsed, raw: rawText }]);
     } catch (err) {
+      console.error('doApiCall error:', err);
       setUiMessages(prev => [...prev, {
         role: 'assistant',
         parsed: { text: 'Ha ocurrido un error de conexión. Por favor, inténtalo de nuevo.', component: { id: null } },
