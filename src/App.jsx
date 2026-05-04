@@ -177,11 +177,15 @@ export default function App() {
       if (!rawText) console.warn('Empty response from API:', JSON.stringify(data).slice(0, 500));
       const parsed = parseResponse(rawText);
 
-      apiHistoryRef.current = [...apiHistoryRef.current, { role: 'assistant', content: rawText }];
-
       if ((!parsed.text || !parsed.text.trim()) && !parsed.component?.id) {
         parsed.text = 'Disculpa, no he procesado bien tu respuesta. ¿Puedes repetírmelo con un poco más de detalle?';
       }
+
+      // Store only the human-readable text in history, not the raw JSON.
+      // The model reads its own history to find context; raw JSON in history
+      // makes short user replies ambiguous and causes empty responses.
+      const historyContent = parsed.text && parsed.text.trim() ? parsed.text : rawText;
+      apiHistoryRef.current = [...apiHistoryRef.current, { role: 'assistant', content: historyContent }];
 
       setUiMessages(prev => [...prev, { role: 'assistant', parsed, raw: rawText }]);
     } catch (err) {
