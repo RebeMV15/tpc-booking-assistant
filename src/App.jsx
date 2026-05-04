@@ -148,9 +148,13 @@ export default function App() {
     callChain.current = callChain.current.then(() => doApiCall(userText));
   };
 
-  const doApiCall = async (userText) => {
+  const doApiCall = async (userText, fromComponent = false) => {
     const newUserMsg = { role: 'user', content: userText };
     apiHistoryRef.current = [...apiHistoryRef.current, newUserMsg];
+
+    const systemPrompt = fromComponent
+      ? buildSystemPrompt() + `\n\n⚠️ ACCIÓN INMEDIATA REQUERIDA: El usuario acaba de hacer clic en un componente de UI y ha seleccionado: "${userText}". El campo "text" de tu respuesta NO puede estar vacío. Debes: (1) confirmar verbalmente lo seleccionado, (2) avanzar al siguiente paso del proceso de reserva.`
+      : buildSystemPrompt();
 
     setLoading(true);
     try {
@@ -160,11 +164,15 @@ export default function App() {
         body: JSON.stringify({
           model: 'claude-sonnet-4-6',
           max_tokens: 4096,
-          system: buildSystemPrompt(),
+          system: systemPrompt,
           messages: apiHistoryRef.current,
         }),
       });
       const data = await res.json();
+      if (!res.ok) {
+        console.error('API error:', res.status, data);
+        throw new Error(data?.error?.message || `HTTP ${res.status}`);
+      }
       const rawText = data.content?.[0]?.text || '';
       if (!rawText) console.warn('Empty response from API:', JSON.stringify(data).slice(0, 500));
       const parsed = parseResponse(rawText);
@@ -196,7 +204,7 @@ export default function App() {
   const handleComponentSelect = (text) => {
     setInput('');
     setUiMessages(prev => [...prev, { role: 'user', content: text }]);
-    callChain.current = callChain.current.then(() => doApiCall(text));
+    callChain.current = callChain.current.then(() => doApiCall(text, true));
   };
 
   // ─── LANDING PAGE ───────────────────────────────────────────────────────────
