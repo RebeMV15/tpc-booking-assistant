@@ -10,6 +10,14 @@ const LOGO_SVG = `<svg width="180" height="30" viewBox="0 0 300 50" fill="none" 
 // Dark (blue) version of logo for light backgrounds
 const LOGO_SVG_DARK = LOGO_SVG.replace(/fill="#f0ebe3"/g, 'fill="#274c69"');
 
+const FALLBACK_MESSAGES = [
+  'Disculpa, no lo he procesado bien. ¿Puedes repetírmelo con un poco más de detalle?',
+  'No lo he captado del todo. Prueba a describirlo con una frase completa, por ejemplo indicando el nombre o la fecha exacta.',
+  'Hmm, no estoy seguro de haberlo entendido. ¿Puedes formularlo de otra forma?',
+  'Lo siento, necesito un poco más de contexto para ayudarte. ¿Puedes ser más específico?',
+  'No lo he procesado bien esta vez. Intenta describirlo con algo más de detalle y lo gestiono enseguida.',
+];
+
 const SUGGESTIONS = [
   "Quiero una escapada romántica inolvidable",
   "Vacaciones en familia con aventura y playa",
@@ -149,10 +157,10 @@ export default function App() {
   };
 
   const doApiCall = async (userText, fromComponent = false) => {
-    const FALLBACK_PREFIX = 'Disculpa, no he procesado';
-    // Skip fallback messages — injecting them as context gives the model useless noise
+    // Fallback messages are never stored in history (removed on isFallback),
+    // so any assistant entry in the ref is a real model response.
     const lastAssistant = [...apiHistoryRef.current].reverse().find(
-      m => m.role === 'assistant' && !m.content.startsWith(FALLBACK_PREFIX)
+      m => m.role === 'assistant'
     );
 
     apiHistoryRef.current = [...apiHistoryRef.current, { role: 'user', content: userText }];
@@ -164,20 +172,21 @@ export default function App() {
       contextNote = `\n\nCONTEXTO: El usuario responde "${userText}" directamente a tu última intervención: "${lastAssistant.content.slice(0, 300)}". Interpreta su respuesta en este contexto. El campo "text" NO puede estar vacío.`;
     }
 
-    // Prefill: the last message is a partial assistant turn starting with '{'.
-    // The model must complete the JSON object. The API returns only the
-    // continuation, so we prepend '{' when parsing. Using just '{' (not '{"')
-    // avoids a double-quote bug where the model re-emits the opening quote of
-    // the first key, producing invalid JSON like {""intent":...}.
+    // Prefill: forces the model to complete a JSON object starting with '{'.
+    // The API returns only the continuation, so we prepend '{' when parsing.
+    // Using '{' (not '{"') avoids a double-quote bug where the model re-emits
+    // the opening quote, producing invalid JSON like {""intent":...}.
     const PREFILL = '{';
-    const callApi = (extraNote) => fetch('/api/chat', {
+    const callApi = (extraNote, withPrefill = true) => fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'claude-sonnet-4-6',
         max_tokens: 4096,
         system: buildSystemPrompt() + contextNote + extraNote,
-        messages: [...apiHistoryRef.current, { role: 'assistant', content: PREFILL }],
+        messages: withPrefill
+          ? [...apiHistoryRef.current, { role: 'assistant', content: PREFILL }]
+          : [...apiHistoryRef.current],
       }),
     });
 
@@ -192,20 +201,20 @@ export default function App() {
       const continuation = data.content?.[0]?.text || '';
       let rawText = continuation ? PREFILL + continuation : '';
 
-      // Retry once if still empty (e.g. API returned empty body)
+      // Retry without prefill — different generation path avoids the same empty-text failure.
       if (!rawText || !parseResponse(rawText).text?.trim()) {
-        console.warn('Empty/invalid response, retrying:', rawText.slice(0, 200));
-        res = await callApi('\n\n🚨 RESPUESTA ANTERIOR VACÍA. El campo "text" es OBLIGATORIO. Responde con texto ahora.');
+        console.warn('Empty/invalid response, retrying without prefill:', rawText.slice(0, 200));
+        res = await callApi('\n\n🚨 CRÍTICO: En tu intento anterior el campo "text" quedó vacío. Genera ahora un JSON completo y válido donde "text" contenga una frase no vacía. Es absolutamente obligatorio.', false);
         data = await res.json();
         const retryContinuation = data.content?.[0]?.text || '';
-        rawText = retryContinuation ? PREFILL + retryContinuation : '';
+        rawText = retryContinuation; // full JSON — no PREFILL prepend needed
       }
 
       const parsed = parseResponse(rawText);
 
       const isFallback = (!parsed.text || !parsed.text.trim()) && !parsed.component?.id;
       if (isFallback) {
-        parsed.text = 'Disculpa, no he procesado bien tu respuesta. ¿Puedes repetírmelo con un poco más de detalle?';
+        parsed.text = FALLBACK_MESSAGES[Math.floor(Math.random() * FALLBACK_MESSAGES.length)];
         // Remove the user message we just added so the failed exchange
         // doesn't contaminate history and confuse the model on retry.
         apiHistoryRef.current = apiHistoryRef.current.slice(0, -1);
