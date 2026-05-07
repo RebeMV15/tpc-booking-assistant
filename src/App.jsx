@@ -203,14 +203,18 @@ export default function App() {
 
       const parsed = parseResponse(rawText);
 
-      if ((!parsed.text || !parsed.text.trim()) && !parsed.component?.id) {
+      const isFallback = (!parsed.text || !parsed.text.trim()) && !parsed.component?.id;
+      if (isFallback) {
         parsed.text = 'Disculpa, no he procesado bien tu respuesta. ¿Puedes repetírmelo con un poco más de detalle?';
+        // Remove the user message we just added so the failed exchange
+        // doesn't contaminate history and confuse the model on retry.
+        apiHistoryRef.current = apiHistoryRef.current.slice(0, -1);
+      } else {
+        // Store only readable text in history (not raw JSON) so future short
+        // replies can be interpreted without wading through component data.
+        const historyContent = parsed.text?.trim() || rawText;
+        apiHistoryRef.current = [...apiHistoryRef.current, { role: 'assistant', content: historyContent }];
       }
-
-      // Store only readable text in history (not raw JSON) so future short
-      // replies can be interpreted without wading through component data.
-      const historyContent = parsed.text?.trim() || rawText;
-      apiHistoryRef.current = [...apiHistoryRef.current, { role: 'assistant', content: historyContent }];
 
       setUiMessages(prev => [...prev, { role: 'assistant', parsed, raw: rawText }]);
     } catch (err) {
