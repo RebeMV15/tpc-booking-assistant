@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import bgLanding from './fondo-landing.jpg';
 import { buildSystemPrompt } from './systemPrompt.js';
 import { HotelCards, DestinationCards, RoomCards } from './components/Cards.jsx';
@@ -547,6 +548,7 @@ export default function App() {
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(39,76,105,0.2); border-radius: 2px; }
       `}</style>
+      <Analytics />
     </div>
   );
 }
